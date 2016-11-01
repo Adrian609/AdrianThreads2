@@ -5,15 +5,22 @@
  */
 package adrianthreads2;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  *
  * @author Arod6
  */
 public class printB implements Runnable {
 
+    // prevents the run method from bring accesable
+    ReentrantLock lock = new ReentrantLock();
+
     @Override
     public void run() {
-        System.out.println("B");
+        lock.lock();
+        System.out.print("B");
+        lock.unlock();
     }
 
 }
